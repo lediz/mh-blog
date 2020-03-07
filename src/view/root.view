@@ -1,0 +1,24 @@
+<html>
+
+	<h3>My first blog...</h3><hr>
+
+	<?prg
+		LOCAL hData 	:= PValue(1)
+		LOCAL cHtml 	:= ''
+		LOCAL nI
+		
+		FOR nI := 1 TO len( hData[ 'rows' ] )
+			cHtml += valtochar( hData[ 'rows'][ nI ] ) + '<br>'
+		NEXT
+	  
+	    retu cHtml
+	?>
+	
+	Last Recno = {{ PARAM 1, 'recno' }}
+	
+	<form action="{{ Route( 'root' ) }}" method="POST">
+		<input type="hidden" name="recno" value="{{ PARAM 1, 'recno' }}">		
+		<input type="submit" name="action" value="Next" >
+	</form>
+	
+</html>
