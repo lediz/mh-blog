@@ -2,9 +2,9 @@
 
 Harbour Comunity Blog Project
 
-Goals:  
-1) Serve as a template for mod_harbour developpers of a real Bolg app.
+Goals:
+1) Serve as a template of a real blog app for mod_harbour developers.
 2) Promote "good practices" in mod_harbour programming.
-3) Tutorial for harbour newcommers.
-4) Promotion tool on mod_harbour capabilities for general web designers/web developpers.
-
+3) Be a tutorial for newcomers to harbour.
+4) Act as a promotion tool for the capabilities of mod_harbour in general
+   web design and development.
