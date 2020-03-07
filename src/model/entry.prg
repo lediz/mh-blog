@@ -26,26 +26,37 @@ METHOD Rows( nId, nRows ) CLASS EntryModel
 	LOCAL hData 	:= {=>}
 	LOCAL hRows 	:= {}
 	LOCAL nCount 	:= 0
+	LOCAL nRecno
 
-	DEFAULT nId 		 TO 1
+	DEFAULT nId 		 TO 0
 	DEFAULT nRows		 TO 5
 	
-	(::cAlias)->( DbGoto( nId ) )
+	IF nId == 0
+		(::cAlias)->( DbGoTop() )
+	ELSE
+		(::cAlias)->( DbGoto( nId ) )
+		(::cAlias)->( DbSkip() )
+	ENDIF
 	
 		WHILE nCount < nRows .AND. (::cAlias)->( !Eof() )
 		
-			Aadd( hRows, { 'id' 		=> (::cAlias)->id,;
+			nRecno := (::cAlias)->( Recno() )
+		
+			Aadd( hRows, { '_recno'	=> nRecno,;
+							'id' 		=> (::cAlias)->id,;
 							'fecha'		=> (::cAlias)->fecha,;
 							'titulo'	=> (::cAlias)->titulo,;
 							'texto' 	=> (::cAlias)->texto ;
 						})						
 		
-			nCount++
+			nCount++						
 		
 			(::cAlias)->( DbSkip(1) )
 		END	
+		
 	
-	hData[ 'recno' ] := (::cAlias)->( Recno() )
+	
+	hData[ 'recno' ] := nRecno
 	hData[ 'rows'  ] := hRows
 
 RETU hData

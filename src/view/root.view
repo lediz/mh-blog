@@ -14,7 +14,7 @@
 	    retu cHtml
 	?>
 	
-	Last Recno = {{ PARAM 1, 'recno' }}
+	<br>Last Recno = {{ PARAM 1, 'recno' }} 
 	
 	<form action="{{ Route( 'root' ) }}" method="POST">
 		<input type="hidden" name="recno" value="{{ PARAM 1, 'recno' }}">		
