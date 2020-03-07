@@ -5,8 +5,9 @@ function Main()
 
 	local oApp := App()
    
-		oApp:oRoute:Map( "GET,POST"			, "root"			, "/"			, "@rootcontroller.prg" )
-
+					//		Verbos			, Key				, url			, Control
+		oApp:oRoute:Map( "GET,POST"		, "root"			, "/"			, "@rootcontroller.prg" )
+		
 	oApp:Init()
 
 return nil

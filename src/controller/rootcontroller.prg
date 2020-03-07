@@ -17,6 +17,7 @@ METHOD New( oController ) CLASS RootController
     local cAction := oController:oRequest:Post( 'action' )
 
 	? 'Action => ', cAction
+	? 'Recno: ' , oController:oRequest:Post( 'recno' )
 	
     do case
        case cAction == "Next"   	; ::Next( oController )
@@ -32,16 +33,16 @@ return Self
 
 METHOD Default( oController ) CLASS RootController
 
-   local oModelEntry 	:= EntryModel():New()   
-   local hData 		:= oModelEntry:Rows( nil, 5 )   
-
+   local oModelEntry 	:= EntryModel():New() 	
+   local hData 		:= oModelEntry:Rows( nil, 5 )      
+   
    oController:View( "root.view", hData )
 
 RETU nil 
 
 METHOD Next( oController ) CLASS RootController  
 
-	local oModelEntry := EntryModel():New() 
+	local oModelEntry	:= EntryModel():New() 
 	local nRecno 		:= oController:oRequest:Post( 'recno', 0, 'N' )
 	local hData 		:= oModelEntry:Rows( nRecno, 5 )
 

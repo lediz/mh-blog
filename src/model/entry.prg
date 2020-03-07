@@ -12,7 +12,6 @@ ENDCLASS
 //----------------------------------------------------------------------------//
 
 METHOD New() CLASS EntryModel
-
 	
 	USE ( AppPathData() + 'entry.dbf' ) SHARED NEW VIA 'DBFCDX'
 	SET INDEX TO 'entry.cdx'
@@ -54,8 +53,6 @@ METHOD Rows( nId, nRows ) CLASS EntryModel
 			(::cAlias)->( DbSkip(1) )
 		END	
 		
-	
-	
 	hData[ 'recno' ] := nRecno
 	hData[ 'rows'  ] := hRows
 

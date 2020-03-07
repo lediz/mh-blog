@@ -7,14 +7,23 @@
 		LOCAL cHtml 	:= ''
 		LOCAL nI
 		
-		FOR nI := 1 TO len( hData[ 'rows' ] )
-			cHtml += valtochar( hData[ 'rows'][ nI ] ) + '<br>'
-		NEXT
+		IF Hb_HHaskey( hData, 'rows' ) 
+		
+			FOR nI := 1 TO len( hData[ 'rows' ] )
+				cHtml += valtochar( hData[ 'rows'][ nI ] ) + '<br>'
+			NEXT
+			
+		ELSE
+		
+			retu 'Error!!!'
+		
+		ENDIF
 	  
 	    retu cHtml
 	?>
 	
 	<br>Last Recno = {{ PARAM 1, 'recno' }} 
+
 	
 	<form action="{{ Route( 'root' ) }}" method="POST">
 		<input type="hidden" name="recno" value="{{ PARAM 1, 'recno' }}">		
